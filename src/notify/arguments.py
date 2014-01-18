@@ -3,7 +3,7 @@
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import sys
-import argparse
+import optparse
 
 def split_arguments(args):
     """
@@ -59,45 +59,45 @@ def parse_arguments(args, config):
              "              "
              "[-o HOST] [-p PORT] [--username USERNAME] [--password PASSWORD]\n"
              "              "
-             "[--setup] [--check] COMMAND ARGUMENTS")
+             "[--setup] [--check] COMMAND ARGUMENTS") % {'prog': "notify"}
     description = """
     Call COMMAND with ARGUMENTS and send notification email to TO_ADDR
     """
     epilog = "(C) 2014, hashnote.net Alisue"
-    parser = argparse.ArgumentParser(
+    parser = optparse.OptionParser(
             usage=usage,
             description=description,
             epilog=epilog)
-    parser.add_argument('-t', '--to-addr',
-                        default=opts.to_addr,
-                        help=('Destination of the email.'))
-    parser.add_argument('-f', '--from-addr',
-                        default=opts.from_addr,
-                        help=('Source of the email.'))
-    parser.add_argument('-s', '--subject',
-                        default=opts.subject,
-                        help=('Subject of the email'))
-    parser.add_argument('-e', '--encoding',
-                        default=opts.encoding,
-                        help=('Encoding of the email'))
-    parser.add_argument('-o', '--host',
-                        default=opts.host,
-                        help=('Host address of MUA'))
-    parser.add_argument('-p', '--port', type=int,
-                        default=opts.port,
-                        help=('Port number of MUA'))
-    parser.add_argument('--username',
-                        default=opts.username,
-                        help=('Username of the authentication'))
-    parser.add_argument('--password',
-                        help=('Password of the authentication'))
-    parser.add_argument('--setup', default=False,
-                        action='store_true',
-                        help=('Setup %(prog)s configuration'))
-    parser.add_argument('--check', default=False,
-                        action='store_true',
-                        help=('Send %(prog)s configuration via email for '
-                              'checking. Only for Unix system.'))
+    parser.add_option('-t', '--to-addr',
+                      default=opts.to_addr,
+                      help=('Destination of the email.'))
+    parser.add_option('-f', '--from-addr',
+                      default=opts.from_addr,
+                      help=('Source of the email.'))
+    parser.add_option('-s', '--subject',
+                      default=opts.subject,
+                      help=('Subject of the email'))
+    parser.add_option('-e', '--encoding',
+                      default=opts.encoding,
+                      help=('Encoding of the email'))
+    parser.add_option('-o', '--host',
+                      default=opts.host,
+                      help=('Host address of MUA'))
+    parser.add_option('-p', '--port', type='int',
+                      default=opts.port,
+                      help=('Port number of MUA'))
+    parser.add_option('--username',
+                      default=opts.username,
+                      help=('Username of the authentication'))
+    parser.add_option('--password',
+                      help=('Password of the authentication'))
+    parser.add_option('--setup', default=False,
+                      action='store_true',
+                      help=('Setup %(prog)s configuration'))
+    parser.add_option('--check', default=False,
+                      action='store_true',
+                      help=('Send %(prog)s configuration via email for '
+                            'checking. Only for Unix system.'))
 
     # display if no arguments were passed
     args = args or sys.argv
@@ -108,5 +108,5 @@ def parse_arguments(args, config):
     # split argv to two array
     lhs, rhs = split_arguments(args)
     # parse options
-    opts = parser.parse_args(args=lhs[1:])
+    opts = parser.parse_args(args=lhs[1:])[0]
     return rhs, opts

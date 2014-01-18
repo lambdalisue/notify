@@ -83,16 +83,15 @@ def config_to_options(config):
     object
         An argparse.Namespace instance
     """
-    import argparse
-    opts = argparse.Namespace(
-        host=config.get('smtp', 'host', raw=True),
-        port=config.getint('smtp', 'port'),
-        to_addr=config.get('mail', 'to_addr', raw=True),
-        from_addr=config.get('mail', 'from_addr', raw=True),
-        subject=config.get('mail', 'subject', raw=True),
-        encoding=config.get('mail', 'encoding', raw=True),
-        username=config.get('auth', 'username'),
-    )
+    class Options:
+        host=config.get('smtp', 'host', raw=True)
+        port=config.getint('smtp', 'port')
+        to_addr=config.get('mail', 'to_addr', raw=True)
+        from_addr=config.get('mail', 'from_addr', raw=True)
+        subject=config.get('mail', 'subject', raw=True)
+        encoding=config.get('mail', 'encoding', raw=True)
+        username=config.get('auth', 'username')
+    opts = Options()
     # format
     opts.from_addr % {'host': opts.host, 'prog': 'notify'}
     opts.to_addr % {'host': opts.host, 'prog': 'notify'}

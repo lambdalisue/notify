@@ -3,7 +3,6 @@
 A terminal command executor module
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
-
 import io
 import sys
 import subprocess
@@ -25,8 +24,8 @@ def call(args):
     """
     b = io.BytesIO()
     p = subprocess.Popen(args,
-                            stdout=subprocess.PIPE,
-                            stderr=subprocess.STDOUT)
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.STDOUT)
     while p.returncode is None:
         stdout = p.communicate()[0]
         # output to stdout and buffer

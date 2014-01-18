@@ -3,10 +3,6 @@
 Mailer module
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
-import os
-import sys
-import StringIO
-import subprocess
 import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
