@@ -48,7 +48,10 @@ setup(
     package_dir = {'': 'src'},
     include_package_data = True,
     package_data = {
-        '': ['LICENSE', 'README.rst', 'requirements.txt'],
+        '': ['LICENSE', 'README.rst',
+             'requirements.txt',
+             'requirements-test.txt',
+             'requirements-docs.txt'],
     },
     zip_safe=True,
     install_requires=readlist('requirements.txt'),
