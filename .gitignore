@@ -1,0 +1,4 @@
+.coverage
+.profile
+docs/_build
+MANIFEST
