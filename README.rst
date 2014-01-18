@@ -1,5 +1,13 @@
 notify
 ==========================
+.. image:: https://secure.travis-ci.org/lambdalisue/notify.png?branch=master
+    :target: http://travis-ci.org/lambdalisue/notify
+    :alt: Build status
+
+.. image:: https://coveralls.io/repos/lambdalisue/notify/badge.png?branch=master
+    :target: https://coveralls.io/r/lambdalisue/notify/
+    :alt: Coverage
+
 .. image:: https://pypip.in/d/notify/badge.png
     :target: https://pypi.python.org/pypi/notify/
     :alt: Downloads
