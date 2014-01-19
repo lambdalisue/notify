@@ -3,7 +3,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = 'notify'
-VERSION = '0.1.7'
+VERSION = '0.1.8'
 
 def read(filename):
     import os
@@ -16,15 +16,6 @@ def readlist(filename):
     rows = read(filename).split("\n")
     rows = [x.strip() for x in rows if x.strip()]
     return list(rows)
-
-# if we are running on python 3, enable 2to3 and
-# let it use the custom fixers from the custom_fixers
-# package.
-extra = {}
-if sys.version_info >= (3, 0):
-    extra.update(
-        use_2to3=True,
-    )
 
 setup(
     name = NAME,
@@ -62,5 +53,4 @@ setup(
             'notify = notify.console:main',
         ],
     },
-    #**extra
 )
