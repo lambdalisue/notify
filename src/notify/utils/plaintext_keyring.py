@@ -5,7 +5,7 @@ Plaintext keyring module
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import os
 import stat
-import ConfigParser
+from notify.compat import ConfigParser
 
 class PlaintextKeyring(object):
     def __init__(self, filename = None):

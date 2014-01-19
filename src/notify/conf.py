@@ -103,7 +103,7 @@ def create_default_config():
     Create default ConfigParser instance
     """
     import codecs
-    import ConfigParser
+    from notify.compat import ConfigParser
     from notify.compat import StringIO
     config = ConfigParser.SafeConfigParser()
     config.readfp(StringIO(DEFAULT_CONFIG))

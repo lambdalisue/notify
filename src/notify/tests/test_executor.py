@@ -50,7 +50,7 @@ def run_subprocess():
     for i in range(0, 5):
         sys.stdout.write("%s\n" % str(i))
         sys.stdout.flush()
-        time.sleep(0.1)
+        time.sleep(0.01)
 
 def run_nose():
     import nose

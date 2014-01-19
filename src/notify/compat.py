@@ -4,6 +4,11 @@ Compatibility module
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 try:
+    import configparser as ConfigParser
+except ImportError:
+    import ConfigParser
+
+try:
     # pip install keyring
     import keyring
 except ImportError:

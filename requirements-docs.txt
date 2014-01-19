@@ -1,3 +1,2 @@
 validate_email
-sphinx
 numpydoc

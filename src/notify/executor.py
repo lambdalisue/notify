@@ -41,7 +41,9 @@ def call(args):
         b.write(stdout)
         sys.stdout.write(stdout)
         sys.stdout.flush()
-    return p.returncode, b.getvalue()
+    buf = b.getvalue()
+    p.stdout.close()
+    return p.returncode or 0, buf
 
 def get_command_str(args):
     """
