@@ -33,8 +33,7 @@ def call(args):
     p = subprocess.Popen(args,
                         stdout=subprocess.PIPE,
                         stderr=subprocess.STDOUT)
-    encoding = getattr(p.stdout, 'encoding', None) or sys.stdout.encoding
-    encoding = encoding or 'utf-8'
+    encoding = sys.stdout.encoding or 'utf-8'
     # old python has bug in p.stdout, so the following little
     # hack is required.
     for stdout in iter(p.stdout.readline, ''):
