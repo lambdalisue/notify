@@ -102,7 +102,7 @@ def setup_wizard(config):
     print "|"
     username = console_input(username, allow_empty=True)
     username = "" if username == "REMOVE" else username
-    print "8. Please enter an password for authentication [%s]" % password
+    print "8. Please enter an password for authentication"
     print "|"
     print "| To remove password, input 'REMOVE'"
     print "|"
