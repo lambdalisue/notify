@@ -1,15 +1,16 @@
 language: python
 python:
- - 2.4
- - 2.5
  - 2.6
  - 2.7
+ - 3.2
  - 3.3
 
 install:
   - pip install -qr requirements-test.txt
   - pip install -q coverage coveralls
   - pip install .
+  - "if [[ $TRAVIS_PYTHON_VERSION > 3.0 ]]; then 2to3 -w -n --no-diffs src; fi"
+  - "echo Reado to test..."
 
 script:
   - coverage run --source=src/notify setup.py test
