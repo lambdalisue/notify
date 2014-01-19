@@ -97,14 +97,18 @@ def parse_arguments(args, config):
                       help=('Send %(prog)s configuration via email for '
                             'checking. Only for Unix system.'))
 
-    # display if no arguments were passed
-    args = args or sys.argv
+    # display help and exit
     if len(args) == 1:
         parser.print_help()
         sys.exit(0)
+    else:
+        # translate all specified arguments to unicode
+        encoding = sys.stdout.encoding
+        args = map(lambda x: unicode(x, encoding), args)
 
-    # split argv to two array
-    lhs, rhs = split_arguments(args)
-    # parse options
-    opts = parser.parse_args(args=lhs[1:])[0]
-    return rhs, opts
+        # split argv to two array
+        lhs, rhs = split_arguments(args)
+
+        # parse options
+        opts = parser.parse_args(args=lhs[1:])[0]
+        return rhs, opts

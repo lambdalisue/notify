@@ -32,8 +32,10 @@ def create_message(from_addr, to_addr, subject, body, encoding=None):
     """
     if encoding == "None":
         encoding = None
-    msg = MIMEText(body, 'plain', encoding)
-    msg['Subject'] = Header(subject, encoding)
+    if not encoding:
+        encoding = 'utf-8'
+    msg = MIMEText(body.encode(encoding), 'plain', encoding)
+    msg['Subject'] = Header(subject.encode(encoding), encoding)
     msg['From'] = from_addr
     msg['To'] = to_addr
     msg['Date'] = formatdate()

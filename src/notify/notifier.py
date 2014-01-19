@@ -45,9 +45,9 @@ def call_and_notificate(args, opts):
     tdelta = time.time() - stttime
     endtime = datetime.datetime.now()
     if exit_code == 0:
-        status = "Success"
+        status = u"Success"
     else:
-        status = "Fail (%d)" % exit_code
+        status = u"Fail (%d)" % exit_code
     # create email body
     body = EMAIL_BODY % {
         'prog': get_command_str(args),
