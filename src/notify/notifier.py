@@ -66,6 +66,6 @@ def call_and_notificate(args, opts):
                          body,
                          opts.encoding)
     # obtain password from keyring
-    password = keyring.get_password('notify', 'authentication')
+    password = keyring.get_password('notify', opts.username)
     # send email
     send_email(msg, opts.host, opts.port, opts.username, password)

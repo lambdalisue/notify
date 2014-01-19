@@ -95,7 +95,7 @@ def setup_wizard(config):
 
     # Auth section
     username = config.get('auth', 'username', raw=True)
-    password = keyring.get_password('notify', 'authentication') or ""
+    password = keyring.get_password('notify', username) or ""
     print "7. Please enter an username for authentication [%s]" % username
     print "|"
     print "| To remove username, input 'REMOVE'"
@@ -119,9 +119,9 @@ def setup_wizard(config):
     config.set('auth', 'username', username)
     # do not store password in config file
     if password:
-        keyring.set_password('notify', 'authentication', password)
-    elif keyring.get_password('notify', 'authentication'):
-        keyring.delete_password('notify', 'authentication')
+        keyring.set_password('notify', username, password)
+    elif keyring.get_password('notify', username):
+        keyring.delete_password('notify', username)
 
     # save config
     import os
