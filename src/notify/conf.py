@@ -4,6 +4,20 @@
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import os
 
+DEFAULT_CONFIG=u"""
+[smtp]
+host = localhost
+port = 25
+
+[mail]
+from_addr = notify@localhost
+to_addr =
+subject = Notify: %(prog)s has %(status)s
+encoding = None
+
+[auth]
+username =
+"""
 
 def get_user_config_filename(appname='notify'):
     """
@@ -92,21 +106,6 @@ def create_default_config():
     from notify.compat import StringIO
     config = ConfigParser.SafeConfigParser()
     config.readfp(StringIO(DEFAULT_CONFIG))
-
-    DEFAULT_CONFIG=u"""
-    [smtp]
-    host = localhost
-    port = 25
-
-    [mail]
-    from_addr = notify@localhost
-    to_addr =
-    subject = Notify: %(prog)s has %(status)s
-    encoding = None
-
-    [auth]
-    username =
-    """
 
     # Load user settings
     filename = get_user_config_filename()
