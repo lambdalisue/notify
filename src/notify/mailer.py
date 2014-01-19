@@ -8,10 +8,6 @@ from notify.compat import Header
 from notify.compat import MIMEText
 from notify.compat import formatdate
 
-def console_debug(debug, output):
-    if debug:
-        print output
-
 def create_message(from_addr, to_addr, subject, body, encoding=None):
     """
     Create message object for sending email
@@ -44,8 +40,7 @@ def create_message(from_addr, to_addr, subject, body, encoding=None):
     return msg
 
 def send_email(msg, host='localhost', port=25,
-         username=None, password=None,
-         debug=False):
+         username=None, password=None):
     """
     Send an email (via TLS when username and password are specified)
 
@@ -65,19 +60,11 @@ def send_email(msg, host='localhost', port=25,
     debug : boolean
         True for displaying debug messages
     """
-    console_debug(debug, "Create STMP instance...")
     s = smtplib.SMTP(host, port)
     if username and password:
-        _console_debug(debug, "Identify ourseleves to the client...")
         s.ehlo()
-        _console_debug(debug, "Start secure connection with tls encryption...")
         s.starttls()
-        _console_debug(debug,
-            "Re-identify ourselves as an encrypted connection...")
         s.ehlo()
-        _console_debug(debug, "Login with specified username and password...")
         s.login(user, passwd)
-    console_debug(debug, "Sending email from %s to %s..." % (
-        msg['From'], msg['To']))
     s.sendmail(msg['From'], [msg['To']], msg.as_string())
     s.close()

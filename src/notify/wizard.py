@@ -133,9 +133,11 @@ def setup_wizard(config):
     filename = get_user_config_filename()
     if not os.path.exists(os.path.dirname(filename)):
         os.makedirs(os.path.dirname(filename))
-    fo = codecs.open(filename, 'wb', 'utf-8')
-    config.write(fo)
-    fo.close()
+    try:
+        fo = codecs.open(filename, 'wb', 'utf-8')
+        config.write(fo)
+    finally:
+        fo.close()
 
 if __name__ == '__main__':
     setup_wizard(None)

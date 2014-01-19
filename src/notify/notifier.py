@@ -10,7 +10,7 @@ from notify.executor import get_command_str
 from notify.mailer import create_message
 from notify.mailer import send_email
 
-EMAIL_BODY = """
+EMAIL_BODY = u"""
 %(status)s: %(prog)s
 
 Start: %(stdtime)s

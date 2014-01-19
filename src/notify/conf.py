@@ -114,7 +114,9 @@ def create_default_config():
         from wizard import setup_wizard
         setup_wizard(config)
     else:
-        fi = codecs.open(filename, 'r', encoding='utf-8')
-        config.readfp(fi)
-        fi.close()
+        try:
+            fi = codecs.open(filename, 'r', encoding='utf-8')
+            config.readfp(fi)
+        finally:
+            fi.close()
     return config

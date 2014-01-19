@@ -7,6 +7,12 @@ import sys
 import subprocess
 from notify.compat import StringIO
 
+if sys.version_info >= (3, 0):
+    # i'm not sure the encoding should be utf-8 or not
+    force_unicode = lambda x: str(x, 'utf-8')
+else:
+    force_unicode = unicode
+
 def call(args):
     """
     Call terminal command and return exit_code and stdout
@@ -24,14 +30,17 @@ def call(args):
     """
     b = StringIO()
     p = subprocess.Popen(args,
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.STDOUT)
-    while p.returncode is None:
-        stdout = p.communicate()[0]
-        # output to stdout and buffer
-        sys.stdout.write(stdout)
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.STDOUT)
+    # old python has bug in p.stdout, so the following little
+    # hack is required.
+    for stdout in iter(p.stdout.readline, ''):
+        if len(stdout) == 0:
+            break
+        stdout = force_unicode(stdout)
         b.write(stdout)
-    # return exit_code and buffer
+        sys.stdout.write(stdout)
+        sys.stdout.flush()
     return p.returncode, b.getvalue()
 
 def get_command_str(args):

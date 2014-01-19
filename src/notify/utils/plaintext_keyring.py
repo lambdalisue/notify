@@ -4,6 +4,7 @@ Plaintext keyring module
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import os
+import stat
 import ConfigParser
 
 class PlaintextKeyring(object):
@@ -31,7 +32,7 @@ class PlaintextKeyring(object):
         config.write(fo)
         fo.close()
         # change permission of the file
-        os.chmod(self.filename, 0600)
+        os.chmod(self.filename, stat.S_IRUSR | stat.S_IWUSR)
 
     def delete_password(self, service_name, username):
         config = ConfigParser.SafeConfigParser()
@@ -41,5 +42,4 @@ class PlaintextKeyring(object):
         config.write(fo)
         fo.close()
         # change permission of the file
-        os.chmod(self.filename, 0600)
-
+        os.chmod(self.filename, stat.S_IRUSR | stat.S_IWUSR)
