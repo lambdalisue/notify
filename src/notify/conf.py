@@ -4,7 +4,7 @@
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import os
 
-DEFAULT_CONFIG="""
+DEFAULT_CONFIG=u"""
 [smtp]
 host = localhost
 port = 25
