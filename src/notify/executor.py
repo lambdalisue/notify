@@ -3,9 +3,9 @@
 A terminal command executor module
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
-import io
 import sys
 import subprocess
+from notify.compat import StringIO
 
 def call(args):
     """
@@ -22,7 +22,7 @@ def call(args):
         exit_code indicate the exit code of the command and stdout indicate the
         output of the command
     """
-    b = io.BytesIO()
+    b = StringIO()
     p = subprocess.Popen(args,
                          stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT)

@@ -9,8 +9,8 @@ def read(filename):
     import os
     BASE_DIR = os.path.dirname(__file__)
     filename = os.path.join(BASE_DIR, filename)
-    with open(filename, 'r') as fi:
-        return fi.read()
+    fi = open(filename, 'r')
+    return fi.read()
 
 def readlist(filename):
     rows = read(filename).split("\n")

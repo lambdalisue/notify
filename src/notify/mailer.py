@@ -4,15 +4,15 @@ Mailer module
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import smtplib
-from email.header import Header
-from email.mime.text import MIMEText
-from email.utils import formatdate
+from notify.compat import Header
+from notify.compat import MIMEText
+from notify.compat import formatdate
 
 def console_debug(debug, output):
     if debug:
         print output
 
-def create_message(from_addr, to_addr, subject, body, encoding='utf-8'):
+def create_message(from_addr, to_addr, subject, body, encoding=None):
     """
     Create message object for sending email
 
@@ -27,13 +27,15 @@ def create_message(from_addr, to_addr, subject, body, encoding='utf-8'):
     body : string
         An email body string
     encoding : string
-        An email encoding string (Default: utf-8)
+        An email encoding string (Default: utf8)
 
     Returns
     -------
     object
         An instance of email.mime.text.MIMEText
     """
+    if encoding == "None":
+        encoding = None
     msg = MIMEText(body, 'plain', encoding)
     msg['Subject'] = Header(subject, encoding)
     msg['From'] = from_addr

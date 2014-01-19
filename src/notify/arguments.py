@@ -63,11 +63,9 @@ def parse_arguments(args, config):
     description = """
     Call COMMAND with ARGUMENTS and send notification email to TO_ADDR
     """
-    epilog = "(C) 2014, hashnote.net Alisue"
     parser = optparse.OptionParser(
             usage=usage,
-            description=description,
-            epilog=epilog)
+            description=description)
     parser.add_option('-t', '--to-addr',
                       default=opts.to_addr,
                       help=('Destination of the email.'))

@@ -49,7 +49,7 @@ def console_input(default, validation=None, allow_empty=False):
     return value
 
 def setup_wizard(config):
-    import keyring
+    from notify.compat import keyring
     print
     print "#" * 50
     print "#", "#".rjust(48)
@@ -101,13 +101,15 @@ def setup_wizard(config):
     print "| To remove username, input 'REMOVE'"
     print "|"
     username = console_input(username, allow_empty=True)
-    username = "" if username == "REMOVE" else username
+    if username == 'REMOVE':
+        username = ""
     print "8. Please enter an password for authentication"
     print "|"
     print "| To remove password, input 'REMOVE'"
     print "|"
     password = console_input(password, allow_empty=True)
-    password = "" if password == "REMOVE" else password
+    if password == "REMOVE":
+        password = ""
 
     # save into config
     config.set('smtp', 'host', host)
@@ -118,10 +120,11 @@ def setup_wizard(config):
     config.set('mail', 'encoding', encoding)
     config.set('auth', 'username', username)
     # do not store password in config file
-    if password:
-        keyring.set_password('notify', username, password)
-    elif keyring.get_password('notify', username):
-        keyring.delete_password('notify', username)
+    if username:
+        if password:
+            keyring.set_password('notify', username, password)
+        elif keyring.get_password('notify', username):
+            keyring.delete_password('notify', username)
 
     # save config
     import os
@@ -130,8 +133,9 @@ def setup_wizard(config):
     filename = get_user_config_filename()
     if not os.path.exists(os.path.dirname(filename)):
         os.makedirs(os.path.dirname(filename))
-    with codecs.open(filename, 'wb', 'utf-8') as f:
-        config.write(f)
+    fo = codecs.open(filename, 'wb', 'utf-8')
+    config.write(fo)
+    fo.close()
 
 if __name__ == '__main__':
     setup_wizard(None)

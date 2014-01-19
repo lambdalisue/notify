@@ -1,2 +1,1 @@
-keyring
 validate_email

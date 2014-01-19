@@ -4,7 +4,7 @@
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import time
 import datetime
-import keyring
+from notify.compat import keyring
 from notify.executor import call
 from notify.executor import get_command_str
 from notify.mailer import create_message
@@ -44,10 +44,14 @@ def call_and_notificate(args, opts):
     cdelta = time.clock() - stctime
     tdelta = time.time() - stttime
     endtime = datetime.datetime.now()
+    if exit_code == 0:
+        status = "Success"
+    else:
+        status = "Fail (%d)" % exit_code
     # create email body
     body = EMAIL_BODY % {
         'prog': get_command_str(args),
-        'status': 'Success' if exit_code == 0 else 'Fail',
+        'status': status,
         'stdtime': stdtime,
         'endtime': endtime,
         'tdelta': tdelta,
@@ -57,7 +61,7 @@ def call_and_notificate(args, opts):
     # create email subject
     subject = opts.subject % {
         'prog': get_command_str(args),
-        'status': 'success' if exit_code == 0 else 'fail',
+        'status': status.lower(),
     }
     # create email message
     msg = create_message(opts.from_addr,

@@ -13,7 +13,7 @@ port = 25
 from_addr = notify@localhost
 to_addr =
 subject = Notify: %(prog)s has %(status)s
-encoding = utf-8
+encoding = None
 
 [auth]
 username = 
@@ -102,11 +102,11 @@ def create_default_config():
     """
     Create default ConfigParser instance
     """
-    import io
     import codecs
     import ConfigParser
+    from notify.compat import StringIO
     config = ConfigParser.SafeConfigParser()
-    config.readfp(io.BytesIO(DEFAULT_CONFIG))
+    config.readfp(StringIO(DEFAULT_CONFIG))
 
     # Load user settings
     filename = get_user_config_filename()
@@ -114,6 +114,7 @@ def create_default_config():
         from wizard import setup_wizard
         setup_wizard(config)
     else:
-        with codecs.open(filename, 'r', encoding='utf-8') as f:
-            config.readfp(f)
+        fi = codecs.open(filename, 'r', encoding='utf-8')
+        config.readfp(fi)
+        fi.close()
     return config

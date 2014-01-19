@@ -1,4 +1,5 @@
 .coverage
 .profile
+.python-version
 docs/_build
 MANIFEST
