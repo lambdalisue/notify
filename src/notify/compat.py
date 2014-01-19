@@ -24,12 +24,8 @@ except ImportError:
 try:
     from io import StringIO
 except ImportError:
-    # old python use cStringIO or StringIO
-    # cStringIO is faster so try cStringIO first.
-    try:
-        from cStringIO import StringIO
-    except ImportError:
-        from StringIO import StringIO
+    # old python use StringIO
+    from StringIO import StringIO
 
 try:
     from email.header import Header
