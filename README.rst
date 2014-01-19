@@ -28,7 +28,8 @@ notify
     :target: https://pypi.python.org/pypi/notify/
     :alt: License
 
-Notify process termination via email
+Notify process termination via email.
+It support Python 2.4 and later.
 
 Installation
 ------------
