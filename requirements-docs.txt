@@ -1,2 +1,4 @@
 validate_email
+tolerance
+sphinx
 numpydoc

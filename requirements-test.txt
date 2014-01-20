@@ -1,3 +1,4 @@
 validate_email
+tolerance
 nose
 mock
