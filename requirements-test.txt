@@ -1,4 +1,4 @@
 validate_email
-tolerance
+app_version
 nose
 mock
