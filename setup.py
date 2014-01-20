@@ -17,6 +17,10 @@ def readlist(filename):
     rows = [x.strip() for x in rows if x.strip()]
     return list(rows)
 
+extras = {}
+if sys.version_info >= (3,):
+    extras['use_2to3'] = True
+
 setup(
     name = NAME,
     version = VERSION,
@@ -51,4 +55,5 @@ setup(
             'notify = notify.console:main',
         ],
     },
+    **extras
 )

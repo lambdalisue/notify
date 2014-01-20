@@ -1,10 +1,26 @@
 notify Package
 ==============
 
+:mod:`notify` Package
+---------------------
+
+.. automodule:: notify
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 :mod:`arguments` Module
 -----------------------
 
 .. automodule:: notify.arguments
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`compat` Module
+--------------------
+
+.. automodule:: notify.compat
     :members:
     :undoc-members:
     :show-inheritance:
@@ -56,4 +72,12 @@ notify Package
     :members:
     :undoc-members:
     :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    notify.tests
+    notify.utils
 
