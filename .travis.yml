@@ -14,7 +14,7 @@ install:
   - "echo Reado to test..."
 
 script:
-  - coverage run --source=src/notify setup.py test
+  - nosetests
 
 after_success:
   - coverage report

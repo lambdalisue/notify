@@ -46,8 +46,6 @@ setup(
     },
     zip_safe=True,
     install_requires=readlist('requirements.txt'),
-    test_suite='nose.collector',
-    tests_require=readlist('requirements-test.txt'),
     entry_points={
         'console_scripts': [
             'notify = notify.console:main',
