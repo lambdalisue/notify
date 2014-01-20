@@ -51,7 +51,7 @@ copyright = u'2014, hashnote.net, Alisue'
 # built documents.
 #
 # The short X.Y version.
-version = notify.version
+version = notify.__version__
 # The full version, including alpha/beta/rc tags.
 release = ''
 
