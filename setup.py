@@ -3,7 +3,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = 'notify'
-VERSION = '0.1.10'
+VERSION = '0.1.11'
 
 def read(filename):
     import os
