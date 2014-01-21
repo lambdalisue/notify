@@ -3,7 +3,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = 'notify'
-VERSION = '0.1.11'
+VERSION = '0.2.0'
 
 def read(filename):
     import os
@@ -27,11 +27,16 @@ setup(
     description = 'Notify process termination via email',
     long_description = read('README.rst'),
     classifiers = (
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2.5',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
     ),
     keywords = 'mail note notification notify cui command',
     author = 'Alisue',
