@@ -29,7 +29,8 @@ notify
     :alt: License
 
 Notify process termination via email.
-It support Python 2.4 and later.
+It support Python 2.4 and later (Python 2.4 and Python 2.5 was manually tested,
+so it might not work).
 
 Installation
 ------------
