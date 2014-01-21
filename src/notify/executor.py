@@ -5,7 +5,7 @@ A terminal command executor module
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import sys
 import subprocess
-from notify.compat import StringIO
+from StringIO import StringIO
 
 if sys.version_info >= (3, 0):
     force_unicode = lambda x, y: str(x, y)

@@ -3,6 +3,8 @@
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 import os
+import ConfigParser
+from StringIO import StringIO
 
 DEFAULT_CONFIG=u"""
 [smtp]
@@ -102,8 +104,6 @@ def create_default_config():
     Create default ConfigParser instance
     """
     import codecs
-    from notify.compat import ConfigParser
-    from notify.compat import StringIO
     config = ConfigParser.SafeConfigParser()
     config.readfp(StringIO(DEFAULT_CONFIG))
 

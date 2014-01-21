@@ -4,11 +4,6 @@ Compatibility module
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
 try:
-    import configparser as ConfigParser
-except ImportError:
-    import ConfigParser
-
-try:
     # pip install keyring
     import keyring
 except ImportError:
@@ -20,12 +15,6 @@ except ImportError:
     filename = os.path.splitext(get_user_config_filename())[0]
     filename = filename + ".keyring"
     keyring = PlaintextKeyring(filename)
-
-try:
-    from io import StringIO
-except ImportError:
-    # old python use StringIO
-    from StringIO import StringIO
 
 try:
     from email.header import Header
