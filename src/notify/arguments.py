@@ -51,6 +51,7 @@ def parse_arguments(args, config):
         options indicate the return value of ArgumentParser and arguments
         indicate the execution command/arguments
     """
+    import notify
     from conf import config_to_options
     opts = config_to_options(config)
 
@@ -65,7 +66,8 @@ def parse_arguments(args, config):
     """
     parser = optparse.OptionParser(
             usage=usage,
-            description=description)
+            description=description,
+            version=notify.__version__)
     parser.add_option('-t', '--to-addr',
                       default=opts.to_addr,
                       help=('Destination of the email.'))
