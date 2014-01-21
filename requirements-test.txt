@@ -1,4 +1,7 @@
 validate_email
 app_version
+tox
 nose
+coverage
+coveralls
 mock
