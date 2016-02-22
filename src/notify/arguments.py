@@ -105,8 +105,9 @@ def parse_arguments(args, config):
         sys.exit(0)
     else:
         # translate all specified arguments to unicode
-        encoding = sys.stdout.encoding
-        args = map(lambda x: unicode(x, encoding), args)
+        if sys.version_info < (3,):
+            encoding = sys.stdout.encoding
+            args = map(lambda x: unicode(x, encoding), args)
 
         # split argv to two array
         lhs, rhs = split_arguments(args)
