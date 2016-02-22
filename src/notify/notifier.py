@@ -2,6 +2,7 @@
 """
 """
 __author__ = 'Alisue <lambdalisue@hashnote.net>'
+import os
 import time
 import datetime
 from notify.compat import keyring
@@ -13,6 +14,7 @@ from notify.mailer import send_email
 EMAIL_BODY = u"""
 %(status)s: %(prog)s
 
+CWD:   %(cwd)s
 Start: %(stdtime)s
 End:   %(endtime)s
 Time:  %(tdelta)s sec
@@ -57,6 +59,7 @@ def call_and_notificate(args, opts):
         'tdelta': tdelta,
         'cdelta': cdelta,
         'output': output,
+        'cwd': os.getcwd(),
     }
     # create email subject
     subject = opts.subject % {
