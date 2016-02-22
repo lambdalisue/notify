@@ -3,7 +3,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = 'notify'
-VERSION = '0.2.0'
+VERSION = '0.3.0'
 
 def read(filename):
     import os
@@ -27,7 +27,7 @@ setup(
     description = 'Notify process termination via email',
     long_description = read('README.rst'),
     classifiers = (
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
