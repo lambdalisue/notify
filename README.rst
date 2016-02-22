@@ -44,6 +44,10 @@ Use pip_ like::
 
 .. _pip:  https://pypi.python.org/pypi/pip
 
+Additionally, if you would like to use a mail user agent which requires authentication, installing keyring is strongly recommended::
+
+    $ pip install keyring
+
 Usage
 --------
 1.  Running *notify* with following command will start setup wizard first time.
