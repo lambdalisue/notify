@@ -13,6 +13,9 @@ class PlaintextKeyring(object):
             filename = os.path.expanduser('~')
             filename = os.path.join(filename, '.plaintext_keyring')
         self.filename = filename
+        # Create required directory
+        if not os.path.exists(os.path.dirname(self.filename)):
+            os.makedrs(os.path.dirname(self.filename))
 
     def get_password(self, service_name, username):
         config = ConfigParser.SafeConfigParser()
