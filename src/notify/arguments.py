@@ -88,9 +88,9 @@ def parse_arguments(args, config):
                       help=('Port number of MUA'))
     parser.add_option('--username',
                       default=opts.username,
-                      help=('Username of the authentication'))
+                      help=('Username for authentication'))
     parser.add_option('--password',
-                      help=('Password of the authentication'))
+                      help=('Password for authentication'))
     parser.add_option('--setup', default=False,
                       action='store_true',
                       help=('Setup %(prog)s configuration'))
