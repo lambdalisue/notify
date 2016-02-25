@@ -50,7 +50,7 @@ Additionally, if you would like to use a mail user agent which requires authenti
 
 Usage
 --------
-1.  Running *notify* with following command will start a setup wizard for the first time.
+1.  Running *notify* with the following command will start a setup wizard the first time.
     ::
 
         $ notify
