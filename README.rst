@@ -33,7 +33,7 @@ notify
     :alt: Support version
 
 Notify process termination via email.
-It support Python 2.4 and later (Python 2.4 and Python 2.5 was manually tested,
+It support Python 2.4 and later (Python 2.4 and Python 2.5 were manually tested,
 so it might not work).
 
 Installation
@@ -50,19 +50,19 @@ Additionally, if you would like to use a mail user agent which requires authenti
 
 Usage
 --------
-1.  Running *notify* with following command will start setup wizard first time.
+1.  Running *notify* with following command will start a setup wizard for the first time.
     ::
 
         $ notify
 
-2.  Follow the setup wizard instruction
+2.  Follow the setup wizard instructions.
 
 3.  Check with the following command (Only for Unix system)
     ::
 
         $ notify --check
 
-4.  Use *notify* like
+4.  Sample usage of *notify*
     ::
 
         $ notify really_havy_process -a -b --options
